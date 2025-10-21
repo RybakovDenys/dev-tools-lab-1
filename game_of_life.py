@@ -32,7 +32,7 @@ class GameOfLife:
             for dy in [-1, 0, 1]:
                 if dx == 0 and dy == 0:
                     continue
-                # Wrapping logic for toroidal grid
+                
                 nx = (x + dx + self.width) % self.width
                 ny = (y + dy + self.height) % self.height
                 if (nx, ny) in self.live_cells:
@@ -55,7 +55,6 @@ class GameOfLife:
         for x, y in self.live_cells:
             for dx in [-1, 0, 1]:
                 for dy in [-1, 0, 1]:
-                    # Add all neighbors (with wrapping)
                     nx = (x + dx + self.width) % self.width
                     ny = (y + dy + self.height) % self.height
                     potential_cells.add((nx, ny))
