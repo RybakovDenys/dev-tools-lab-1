@@ -9,6 +9,8 @@ class GameOfLife:
     def __init__(self, width: int, height: int, wrap: bool = True):
         if width <= 0 or height <= 0:
             raise ValueError("Width and height must be positive integers")
+        if not isinstance(wrap, bool):
+            raise TypeError("wrap must be a bool")
         self.width = width
         self.height = height
         self.live_cells = set()
@@ -40,9 +42,9 @@ class GameOfLife:
 
     def get_state(self) -> set[tuple[int, int]]:
         """
-        Returns the current state (set of live cells).
+        Returns a defensive copy of the current state (set of live cells).
         """
-        return self.live_cells
+        return self.live_cells.copy()
 
     def _get_neighbors_count(self, x: int, y: int) -> int:
         """
