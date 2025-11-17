@@ -1,4 +1,4 @@
-"""!
+"""
 @brief Conway's Game of Life engine (finite grid, optional toroidal wrapping).
 
 @details Implements the classic cellular automaton on a width x height grid.
@@ -12,7 +12,7 @@ x increases to the right, y increases downward.
 
 
 class GameOfLife:
-    """\
+    """
     @brief GameOfLife simulation class.
 
     @details Manages live cell state and applies Conway rules per generation.
@@ -29,7 +29,7 @@ class GameOfLife:
     """
 
     def __init__(self, width: int, height: int, wrap: bool = True):
-        """\
+        """
         @brief Initialize a new Game of Life world.
 
         @param width Positive integer width (columns).
@@ -51,7 +51,7 @@ class GameOfLife:
         self.wrap = wrap
 
     def set_state(self, initial_live_cells: set[tuple[int, int]]):
-        """\
+        """
         @brief Set (replace) the current set of live cells.
 
         @param initial_live_cells Set of (x,y) integer tuples designating live cells.
@@ -90,7 +90,7 @@ class GameOfLife:
         self.live_cells = normalized
 
     def get_state(self) -> set[tuple[int, int]]:
-        """\
+        """
         @brief Retrieve the current live cell set.
         @return A defensive (shallow) copy of the internal live cell set.
         @details Mutating the returned set does not affect internal state.
@@ -104,7 +104,7 @@ class GameOfLife:
         return self.live_cells.copy()
 
     def _get_neighbors_count(self, x: int, y: int) -> int:
-        """\
+        """
         @brief Count live neighbors around (x,y) (internal helper).
         @param x Cell x coordinate.
         @param y Cell y coordinate.
@@ -129,7 +129,7 @@ class GameOfLife:
         return count
 
     def step(self):
-        """\
+        """
         @brief Advance simulation by one generation.
         @return None
         @details Applies Conway rules:

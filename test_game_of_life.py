@@ -1,4 +1,4 @@
-"""\
+"""
 @brief Unit tests for the `GameOfLife` simulation engine.
 
 @details Provides behavioral verification for Conway's Game of Life implementation
@@ -17,7 +17,7 @@ from game_of_life import GameOfLife
 
 
 def bounding_box(cells: set[tuple[int, int]]) -> tuple[int, int, int, int] | None:
-    """\
+    """
     @brief Compute minimal axis-aligned bounding box of live cells.
     @param cells Set of (x,y) integer tuples.
     @return (min_x, min_y, max_x, max_y) tuple or None if set empty.
@@ -31,7 +31,7 @@ def bounding_box(cells: set[tuple[int, int]]) -> tuple[int, int, int, int] | Non
     return (min(xs), min(ys), max(xs), max(ys))
 
 def coords(*pairs):
-    """\
+    """
     @brief Convenience helper to build a set of (x,y) coordinate tuples.
     @param pairs Variadic sequence of (x,y) tuples.
     @return Set of provided tuples.
@@ -39,7 +39,7 @@ def coords(*pairs):
     return set(pairs)
 
 def translate(cells: set[tuple[int, int]], dx: int, dy: int, width: int | None = None, height: int | None = None) -> set[tuple[int, int]]:
-    """\
+    """
     @brief Translate a set of cells by (dx, dy), optionally wrapping.
     @param cells Set of (x,y) integer tuples.
     @param dx Horizontal shift.
@@ -60,7 +60,7 @@ def translate(cells: set[tuple[int, int]], dx: int, dy: int, width: int | None =
     return result
 
 def canonicalize(cells: set[tuple[int, int]]) -> set[tuple[int, int]]:
-    """\
+    """
     @brief Normalize a shape so its top-left cell becomes (0,0).
     @param cells Set of (x,y) tuples.
     @return New set with all coordinates shifted.
@@ -75,7 +75,7 @@ def canonicalize(cells: set[tuple[int, int]]) -> set[tuple[int, int]]:
     return {(x - min_x, y - min_y) for x, y in cells}
 
 class TestGameOfLife(unittest.TestCase):
-    """\
+    """
     @brief Comprehensive test cases for `GameOfLife` behaviors.
     @details Covers fundamental rules (under/overpopulation, survival, birth),
     canonical patterns (still lifes, oscillators, spaceship), edge wrapping,
@@ -85,7 +85,7 @@ class TestGameOfLife(unittest.TestCase):
     """
 
     def setUp(self):
-        """\
+        """
         @brief Prepare a fresh 10x10 toroidal world for each test.
         @return None
         @details Ensures test isolation; wrap=True emphasizes torus behavior.
