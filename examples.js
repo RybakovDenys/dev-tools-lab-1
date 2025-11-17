@@ -1,10 +1,10 @@
 var examples =
 [
-    [ "Constructing", "_constructing-example.html", null ],
-    [ "(set[tuple[int, int]] cells)", "_basic-example.html", null ],
-    [ "Empty", "_empty-example.html", null ],
-    [ "(*pairs)", "_c_1_2_users_2_lenovo_2dev-tools-lab-1_2test_game_of_life_8py-example.html", null ],
-    [ "(set[tuple[int, int]] cells, int dx, int dy, int|None width=None, int|None height=None)", "_absolute-example.html", null ],
-    [ "Toroidal", "_toroidal-example.html", null ],
-    [ "Idempotence", "_idempotence-example.html", null ]
+    [ "Constructing", "Constructing-example.html", null ],
+    [ "(set[tuple[int, int]] cells)", "Basic-example.html", null ],
+    [ "Empty", "Empty-example.html", null ],
+    [ "(*pairs)", "_2home_2runner_2work_2dev-tools-lab-1_2dev-tools-lab-1_2test_game_of_life_8py-example.html", null ],
+    [ "(set[tuple[int, int]] cells, int dx, int dy, int|None width=None, int|None height=None)", "Absolute-example.html", null ],
+    [ "Toroidal", "Toroidal-example.html", null ],
+    [ "Idempotence", "Idempotence-example.html", null ]
 ];
