@@ -126,8 +126,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a22322501e07212bbc28672c850b7de84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><pre class="fragment">\
-@brief GameOfLife simulation class.
+<div class="textblock"><pre class="fragment">@brief GameOfLife simulation class.
 
 @details Manages live cell state and applies Conway rules per generation.
 Construction validates dimensions (&gt;0) and wrap flag type. Live cells are
@@ -178,8 +177,7 @@ respects wrapping or bounded edges based on the wrap flag.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">\
-@brief Initialize a new Game of Life world.
+<pre class="fragment">@brief Initialize a new Game of Life world.
 
 @param width Positive integer width (columns).
 @param height Positive integer height (rows).
@@ -232,8 +230,7 @@ respects wrapping or bounded edges based on the wrap flag.
   </tr>
 </table>
 </div><div class="memdoc">
-<pre class="fragment">\
-@brief Count live neighbors around (x,y) (internal helper).
+<pre class="fragment">@brief Count live neighbors around (x,y) (internal helper).
 @param x Cell x coordinate.
 @param y Cell y coordinate.
 @return Integer neighbor count in [0,8].
@@ -256,8 +253,7 @@ respects wrapping or bounded edges based on the wrap flag.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">\
-@brief Retrieve the current live cell set.
+<pre class="fragment">@brief Retrieve the current live cell set.
 @return A defensive (shallow) copy of the internal live cell set.
 @details Mutating the returned set does not affect internal state.
 @example Defensive copy
@@ -294,8 +290,7 @@ respects wrapping or bounded edges based on the wrap flag.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">\
-@brief Set (replace) the current set of live cells.
+<pre class="fragment">@brief Set (replace) the current set of live cells.
 
 @param initial_live_cells Set of (x,y) integer tuples designating live cells.
 @return None
@@ -334,8 +329,7 @@ subsequent get_state calls.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">\
-@brief Advance simulation by one generation.
+<pre class="fragment">@brief Advance simulation by one generation.
 @return None
 @details Applies Conway rules:
     1. Survival: live cell with 2 or 3 neighbors stays alive.
