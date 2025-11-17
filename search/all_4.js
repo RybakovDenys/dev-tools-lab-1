@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['height_0',['height',['../classgame__of__life_1_1GameOfLife.html#ad3b1407ad7fe9dbd0506d8db19fed25c',1,'game_of_life::GameOfLife']]]
+  ['coordinates_20are_20ignored_0',['3x3 bounded world where out-of-bounds coordinates are ignored',['..//home/runner/work/dev-tools-lab-1/dev-tools-lab-1/game_of_life.py#autotoc_md0',1,'']]]
 ];

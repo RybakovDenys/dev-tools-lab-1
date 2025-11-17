@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_5f_5finit_5f_5f_0',['__init__',['../classgame__of__life_1_1GameOfLife.html#a71da5a2963543efbfc229dac9351da63',1,'game_of_life::GameOfLife']]],
-  ['_5fget_5fneighbors_5fcount_1',['_get_neighbors_count',['../classgame__of__life_1_1GameOfLife.html#a22322501e07212bbc28672c850b7de84',1,'game_of_life::GameOfLife']]]
+  ['setup_0',['setUp',['../classtest__game__of__life_1_1TestGameOfLife.html#abe55f9d8973875d6b18a53df6b989493',1,'test_game_of_life::TestGameOfLife']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['verbosity_0',['verbosity',['../namespacetest__game__of__life.html#aef7fe07d77c29fd5670ae5bb81dfa85f',1,'test_game_of_life']]]
+  ['setup_0',['setUp',['../classtest__game__of__life_1_1TestGameOfLife.html#abe55f9d8973875d6b18a53df6b989493',1,'test_game_of_life::TestGameOfLife']]]
 ];

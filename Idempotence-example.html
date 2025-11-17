@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Lab 2 Docs: Member List</title>
+<title>Lab 2 Docs: Idempotence</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classgame__of__life_1_1GameOfLife.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('Idempotence-example.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -89,22 +89,12 @@ $(document).ready(function(){initNavTree('classgame__of__life_1_1GameOfLife.html
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">game_of_life.GameOfLife Member List</div></div>
+  <div class="headertitle"><div class="title">Idempotence</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>This is the complete list of members for <a class="el" href="classgame__of__life_1_1GameOfLife.html">game_of_life.GameOfLife</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html#a71da5a2963543efbfc229dac9351da63">__init__</a>(self, int width, int height, bool wrap=True)</td><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html">game_of_life.GameOfLife</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html#a22322501e07212bbc28672c850b7de84">_get_neighbors_count</a>(self, int x, int y)</td><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html">game_of_life.GameOfLife</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html#a65826acc84b4b5aed5258cf169d77d30">get_state</a>(self)</td><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html">game_of_life.GameOfLife</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html#ad3b1407ad7fe9dbd0506d8db19fed25c">height</a></td><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html">game_of_life.GameOfLife</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html#a5ab06299c80fff05dae4f1e7d8a5a442">live_cells</a></td><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html">game_of_life.GameOfLife</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html#a97ba64e234f76e99366225e99a96dcb7">set_state</a>(self, set[tuple[int, int]] initial_live_cells)</td><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html">game_of_life.GameOfLife</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html#a99fbd85319ec0a4644c716b6fec44fe8">step</a>(self)</td><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html">game_of_life.GameOfLife</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html#a302f90b4555ce3e0ddee08dfe57731ad">width</a></td><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html">game_of_life.GameOfLife</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html#a99ca0da80d2ebde6208fb4b43ec41527">wrap</a></td><td class="entry"><a class="el" href="classgame__of__life_1_1GameOfLife.html">game_of_life.GameOfLife</a></td><td class="entry"></td></tr>
-</table></div><!-- contents -->
+<p>s = {(0,0),(1,0)}; assert canonicalize(s) == s</p>
+<p>s = {(0,0),(1,0)}; assert canonicalize(s) == s</p>
+<div class="fragment"></div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

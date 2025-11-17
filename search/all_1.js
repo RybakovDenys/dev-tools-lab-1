@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bounding_5fbox_0',['bounding_box',['../namespacetest__game__of__life.html#aaa713152f0e63903dc24abe7ca82ef26',1,'test_game_of_life']]]
+  ['3x3_20bounded_20world_20where_20out_20of_20bounds_20coordinates_20are_20ignored_0',['3x3 bounded world where out-of-bounds coordinates are ignored',['..//home/runner/work/dev-tools-lab-1/dev-tools-lab-1/game_of_life.py#autotoc_md0',1,'']]]
 ];

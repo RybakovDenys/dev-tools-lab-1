@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gameoflife_0',['GameOfLife',['../classgame__of__life_1_1GameOfLife.html',1,'game_of_life']]]
+  ['testgameoflife_0',['TestGameOfLife',['../classtest__game__of__life_1_1TestGameOfLife.html',1,'test_game_of_life']]]
 ];
