@@ -58,3 +58,7 @@ game.step()
 print("Next Generation:")
 print(game.get_state())
 ```
+
+## Documentation
+Документація до цього проєкту генерується автоматично за допомогою Doxygen та публікується на GitHub Pages.
+Ви можете знайти її за посиланням: [GitHub Pages Documentation](https://rybakovdenys.github.io/dev-tools-lab-1/)

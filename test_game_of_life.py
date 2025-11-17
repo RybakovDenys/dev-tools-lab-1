@@ -1,10 +1,15 @@
-"""
-Test suite for GameOfLife
+"""\
+@brief Unit tests for the `GameOfLife` simulation engine.
 
-Coordinate system
-- We use (x, y) tuples as (column, row).
-- Origin (0, 0) is the top-left corner.
-- x increases to the right; y increases downward (like terminal rows).
+@details Provides behavioral verification for Conway's Game of Life implementation
+with both toroidal (wrap=True) and bounded (wrap=False) edge modes. Tests rely on
+invariant-based assertions (population, translation, bounding box non-shrink) to
+avoid brittle coordinate expectations for evolving patterns.
+
+Coordinate system:
+* (x, y) as (column, row)
+* Origin (0,0) top-left
+* x increases rightward, y increases downward
 """
 
 import unittest
@@ -12,7 +17,13 @@ from game_of_life import GameOfLife
 
 
 def bounding_box(cells: set[tuple[int, int]]) -> tuple[int, int, int, int] | None:
-    """Return (min_x, min_y, max_x, max_y) as (left, top, right, bottom), or None for empty set."""
+    """\
+    @brief Compute minimal axis-aligned bounding box of live cells.
+    @param cells Set of (x,y) integer tuples.
+    @return (min_x, min_y, max_x, max_y) tuple or None if set empty.
+    @example
+        box = bounding_box({(2,1),(4,3),(3,2)})  # yields (2,1,4,3)
+    """
     if not cells:
         return None
     xs = [x for x, _ in cells]
@@ -20,11 +31,25 @@ def bounding_box(cells: set[tuple[int, int]]) -> tuple[int, int, int, int] | Non
     return (min(xs), min(ys), max(xs), max(ys))
 
 def coords(*pairs):
-    """Helper to create a set of coordinate tuples."""
+    """\
+    @brief Convenience helper to build a set of (x,y) coordinate tuples.
+    @param pairs Variadic sequence of (x,y) tuples.
+    @return Set of provided tuples.
+    """
     return set(pairs)
 
 def translate(cells: set[tuple[int, int]], dx: int, dy: int, width: int | None = None, height: int | None = None) -> set[tuple[int, int]]:
-    """Translate all cells by (dx, dy); wrap if width and height are provided."""
+    """\
+    @brief Translate a set of cells by (dx, dy), optionally wrapping.
+    @param cells Set of (x,y) integer tuples.
+    @param dx Horizontal shift.
+    @param dy Vertical shift.
+    @param width Optional wrap width.
+    @param height Optional wrap height (required if width provided).
+    @return New set of translated (and possibly wrapped) cells.
+    @details If both width and height are provided, wrapping is applied modulo
+    those dimensions; otherwise translation is absolute.
+    """
     result: set[tuple[int, int]] = set()
     for x, y in cells:
         nx, ny = x + dx, y + dy
@@ -35,7 +60,14 @@ def translate(cells: set[tuple[int, int]], dx: int, dy: int, width: int | None =
     return result
 
 def canonicalize(cells: set[tuple[int, int]]) -> set[tuple[int, int]]:
-    """Shift cells so the top-left occupied cell is at (0,0). Useful to compare shapes ignoring placement."""
+    """\
+    @brief Normalize a shape so its top-left cell becomes (0,0).
+    @param cells Set of (x,y) tuples.
+    @return New set with all coordinates shifted.
+    @details Useful for comparing pattern shapes independent of translation.
+    @example
+        canonical = canonicalize({(2,3),(3,3),(2,4)})  # {(0,0),(1,0),(0,1)}
+    """
     if not cells:
         return set()
     min_x = min(x for x, _ in cells)
@@ -43,12 +75,20 @@ def canonicalize(cells: set[tuple[int, int]]) -> set[tuple[int, int]]:
     return {(x - min_x, y - min_y) for x, y in cells}
 
 class TestGameOfLife(unittest.TestCase):
+    """\
+    @brief Comprehensive test cases for `GameOfLife` behaviors.
+    @details Covers fundamental rules (under/overpopulation, survival, birth),
+    canonical patterns (still lifes, oscillators, spaceship), edge wrapping,
+    bounded vs toroidal differences, input validation, and helper invariants.
+    Pattern tests emphasize invariants (population stability, translation,
+    bounding box non-shrink) over brittle coordinate lists for dynamic patterns.
+    """
 
     def setUp(self):
-        """Creates a clean 10x10 grid before each test.
-
-        Tests assume toroidal (wrapping) behavior at grid edges.
-        We make that explicit by passing wrap=True.
+        """\
+        @brief Prepare a fresh 10x10 toroidal world for each test.
+        @return None
+        @details Ensures test isolation; wrap=True emphasizes torus behavior.
         """
         self.game = GameOfLife(10, 10, wrap=True)
 
