@@ -60,7 +60,7 @@ print(game.get_state())
 ```
 
 ## Documentation
-Документація до цього проєкту генерується автоматично за допомогою Doxygen та публікується на GitHub Pages.
-Ви можете знайти її за посиланням: [GitHub Pages Documentation](https://rybakovdenys.github.io/dev-tools-lab-1/)
+Documentation for this project is generated automatically using Doxygen and is published on GitHub Pages.
+You can find it here: [GitHub Pages Documentation](https://rybakovdenys.github.io/dev-tools-lab-1/)
 
-Звіт: https://drive.google.com/file/d/1OIFxtoyF8Vp4121Y6gCtWQosPK8wGIUN/view?usp=sharing
+Report: https://drive.google.com/file/d/1OIFxtoyF8Vp4121Y6gCtWQosPK8wGIUN/view?usp=sharing
