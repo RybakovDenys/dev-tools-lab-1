@@ -37,6 +37,9 @@ class GameOfLife:
         @param wrap If True, world is toroidal (edges wrap); if False, bounded.
         @throws ValueError If width <= 0 or height <= 0.
         @throws TypeError If wrap is not a bool.
+        @example Creating worlds
+            torus = GameOfLife(10, 10, wrap=True)
+            bounded = GameOfLife(10, 10, wrap=False)
         """
         if width <= 0 or height <= 0:
             raise ValueError("Width and height must be positive integers")
@@ -66,6 +69,10 @@ class GameOfLife:
             gol = GameOfLife(5, 5, wrap=True)
             gol.set_state({(-1,-1), (5,5), (2,2)})  # becomes {(4,4), (0,0), (2,2)}
             print(sorted(gol.get_state()))
+        @example Ignoring out-of-bounds in bounded mode
+            bounded = GameOfLife(3, 3, wrap=False)
+            bounded.set_state({(-1,-1), (0,0), (2,2), (3,3)})  # keeps (0,0), (2,2)
+            print(sorted(bounded.get_state()))  # [(0,0), (2,2)]
         """
         normalized: set[tuple[int, int]] = set()
         for item in initial_live_cells:
