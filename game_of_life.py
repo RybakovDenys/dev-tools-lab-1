@@ -1,4 +1,4 @@
-"""\
+"""!
 @brief Conway's Game of Life engine (finite grid, optional toroidal wrapping).
 
 @details Implements the classic cellular automaton on a width x height grid.
