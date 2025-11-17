@@ -101,7 +101,13 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespacegame__of__life"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conway's Game of Life engine (finite grid, optional toroidal wrapping). <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements the classic cellular automaton on a width x height grid. Two modes:</p><ul>
+<li>wrap=True (toroidal): edges wrap; coordinates are normalized modulo width/height.</li>
+<li>wrap=False (bounded): edges are hard boundaries; out-of-range coordinates ignored.</li>
+</ul>
+<p>Internal representation is a set of (x, y) integer tuples where (0,0) is top-left, x increases to the right, y increases downward. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
