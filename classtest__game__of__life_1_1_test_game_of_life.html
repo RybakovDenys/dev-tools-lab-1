@@ -91,6 +91,9 @@ $(function(){initNavTree('classtest__game__of__life_1_1_test_game_of_life.html',
   <div class="headertitle"><div class="title">test_game_of_life.TestGameOfLife Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Comprehensive test cases for <span class="tt">GameOfLife</span> behaviors.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for test_game_of_life.TestGameOfLife:</div>
 <div class="dyncontent">
@@ -101,48 +104,72 @@ Inheritance diagram for test_game_of_life.TestGameOfLife:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abe55f9d8973875d6b18a53df6b989493" id="r_abe55f9d8973875d6b18a53df6b989493"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe55f9d8973875d6b18a53df6b989493">setUp</a> (self)</td></tr>
+<tr class="memdesc:abe55f9d8973875d6b18a53df6b989493"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare a fresh 10x10 toroidal world for each test.  <br /></td></tr>
 <tr class="memitem:aaea62b416740513d47677c8687cc369b" id="r_aaea62b416740513d47677c8687cc369b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaea62b416740513d47677c8687cc369b">test_underpopulation</a> (self)</td></tr>
+<tr class="memdesc:aaea62b416740513d47677c8687cc369b"><td class="mdescLeft">&#160;</td><td class="mdescRight">A live cell (5, 5) with 1 neighbor should die.  <br /></td></tr>
 <tr class="memitem:a72b8f5836cd57da810fdc3c5e8fec579" id="r_a72b8f5836cd57da810fdc3c5e8fec579"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72b8f5836cd57da810fdc3c5e8fec579">test_survival_2_neighbors</a> (self)</td></tr>
+<tr class="memdesc:a72b8f5836cd57da810fdc3c5e8fec579"><td class="mdescLeft">&#160;</td><td class="mdescRight">A live cell (5, 5) with 2 neighbors should survive.  <br /></td></tr>
 <tr class="memitem:a78998e27442d025c42d0d663706de6b1" id="r_a78998e27442d025c42d0d663706de6b1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78998e27442d025c42d0d663706de6b1">test_survival_3_neighbors</a> (self)</td></tr>
+<tr class="memdesc:a78998e27442d025c42d0d663706de6b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">A live cell (5, 5) with 3 neighbors should survive.  <br /></td></tr>
 <tr class="memitem:ae0e3bcc0ca2865f909aa13d542781749" id="r_ae0e3bcc0ca2865f909aa13d542781749"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0e3bcc0ca2865f909aa13d542781749">test_overpopulation</a> (self)</td></tr>
+<tr class="memdesc:ae0e3bcc0ca2865f909aa13d542781749"><td class="mdescLeft">&#160;</td><td class="mdescRight">A live cell (5, 5) with 4 neighbors should die.  <br /></td></tr>
 <tr class="memitem:a3a55de59b64c9876f4cfa0e5999232f5" id="r_a3a55de59b64c9876f4cfa0e5999232f5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a55de59b64c9876f4cfa0e5999232f5">test_reproduction</a> (self)</td></tr>
+<tr class="memdesc:a3a55de59b64c9876f4cfa0e5999232f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dead cell (5, 5) with 3 neighbors should become alive.  <br /></td></tr>
 <tr class="memitem:a0bc80a2bb36f08246784b873cf1b7e1d" id="r_a0bc80a2bb36f08246784b873cf1b7e1d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bc80a2bb36f08246784b873cf1b7e1d">test_stasis_dead_cell</a> (self)</td></tr>
+<tr class="memdesc:a0bc80a2bb36f08246784b873cf1b7e1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">A dead cell (5, 5) with 2 or 4 neighbors should remain dead.  <br /></td></tr>
 <tr class="memitem:a0d32880aeeb2e7924bb5a3d5d2087491" id="r_a0d32880aeeb2e7924bb5a3d5d2087491"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d32880aeeb2e7924bb5a3d5d2087491">test_still_life_block</a> (self)</td></tr>
+<tr class="memdesc:a0d32880aeeb2e7924bb5a3d5d2087491"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'Block' pattern should remain stable.  <br /></td></tr>
 <tr class="memitem:a6525a0e0ecf6c0f03a52213c29564ea8" id="r_a6525a0e0ecf6c0f03a52213c29564ea8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6525a0e0ecf6c0f03a52213c29564ea8">test_still_life_beehive</a> (self)</td></tr>
+<tr class="memdesc:a6525a0e0ecf6c0f03a52213c29564ea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'Beehive' pattern should remain stable.  <br /></td></tr>
 <tr class="memitem:a96fa53613c77d31972acf2894279d86b" id="r_a96fa53613c77d31972acf2894279d86b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96fa53613c77d31972acf2894279d86b">test_still_life_boat</a> (self)</td></tr>
+<tr class="memdesc:a96fa53613c77d31972acf2894279d86b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'Boat' pattern should remain stable.  <br /></td></tr>
 <tr class="memitem:a44c33aee225fa473b357647978c52f39" id="r_a44c33aee225fa473b357647978c52f39"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44c33aee225fa473b357647978c52f39">test_oscillator_blinker_period_1</a> (self)</td></tr>
+<tr class="memdesc:a44c33aee225fa473b357647978c52f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'Blinker' should change orientation after 1 step.  <br /></td></tr>
 <tr class="memitem:aa48cb1dbcdb13b2e065406a3d53f0d19" id="r_aa48cb1dbcdb13b2e065406a3d53f0d19"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa48cb1dbcdb13b2e065406a3d53f0d19">test_oscillator_blinker_period_2</a> (self)</td></tr>
+<tr class="memdesc:aa48cb1dbcdb13b2e065406a3d53f0d19"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'Blinker' should return to its initial state after 2 steps.  <br /></td></tr>
 <tr class="memitem:a7ca9ead53c3122f9d84325376afed5af" id="r_a7ca9ead53c3122f9d84325376afed5af"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ca9ead53c3122f9d84325376afed5af">test_oscillator_toad_period_1</a> (self)</td></tr>
+<tr class="memdesc:a7ca9ead53c3122f9d84325376afed5af"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'Toad' should transition to phase 2 after 1 step.  <br /></td></tr>
 <tr class="memitem:ab0eb502389935d4307a03565d11bf3c3" id="r_ab0eb502389935d4307a03565d11bf3c3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0eb502389935d4307a03565d11bf3c3">test_oscillator_toad_period_2</a> (self)</td></tr>
+<tr class="memdesc:ab0eb502389935d4307a03565d11bf3c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'Toad' returns to its initial state after 2 steps (period-2).  <br /></td></tr>
 <tr class="memitem:af67dc9eff7b2ff0036034009fa0bf275" id="r_af67dc9eff7b2ff0036034009fa0bf275"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af67dc9eff7b2ff0036034009fa0bf275">test_torus_reproduction_top_left_corner</a> (self)</td></tr>
+<tr class="memdesc:af67dc9eff7b2ff0036034009fa0bf275"><td class="mdescLeft">&#160;</td><td class="mdescRight">A cell (0, 0) should be born from neighbors wrapping around the edges.  <br /></td></tr>
 <tr class="memitem:a7234c17b52eeb3197ea5a4a42a5a31dd" id="r_a7234c17b52eeb3197ea5a4a42a5a31dd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7234c17b52eeb3197ea5a4a42a5a31dd">test_torus_overpopulation_right_edge</a> (self)</td></tr>
+<tr class="memdesc:a7234c17b52eeb3197ea5a4a42a5a31dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">A cell (9, 5) on the right edge should die from 4 neighbors wrapping around.  <br /></td></tr>
 <tr class="memitem:a674a070541289e1d167edb9e3cfd4f17" id="r_a674a070541289e1d167edb9e3cfd4f17"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a674a070541289e1d167edb9e3cfd4f17">test_torus_survival_bottom_edge</a> (self)</td></tr>
+<tr class="memdesc:a674a070541289e1d167edb9e3cfd4f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">A cell (5, 9) on the bottom edge should survive with 2 neighbors wrapping around.  <br /></td></tr>
 <tr class="memitem:acaac0929702fbfdfc4d8eeedcc87b625" id="r_acaac0929702fbfdfc4d8eeedcc87b625"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acaac0929702fbfdfc4d8eeedcc87b625">test_torus_blinker_on_edge</a> (self)</td></tr>
+<tr class="memdesc:acaac0929702fbfdfc4d8eeedcc87b625"><td class="mdescLeft">&#160;</td><td class="mdescRight">A 'Blinker' crossing the edge should oscillate correctly.  <br /></td></tr>
 <tr class="memitem:adf5ac48d8ea4689fa6738b8c06064357" id="r_adf5ac48d8ea4689fa6738b8c06064357"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf5ac48d8ea4689fa6738b8c06064357">test_spaceship_glider_move</a> (self)</td></tr>
+<tr class="memdesc:adf5ac48d8ea4689fa6738b8c06064357"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'Glider' should move diagonally after 4 steps.  <br /></td></tr>
 <tr class="memitem:ad79ccdcb53b91e2b2b585cbf63314203" id="r_ad79ccdcb53b91e2b2b585cbf63314203"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad79ccdcb53b91e2b2b585cbf63314203">test_empty_board</a> (self)</td></tr>
+<tr class="memdesc:ad79ccdcb53b91e2b2b585cbf63314203"><td class="mdescLeft">&#160;</td><td class="mdescRight">An empty grid should remain empty.  <br /></td></tr>
 <tr class="memitem:a93b01252cfb016c623d51c866d776285" id="r_a93b01252cfb016c623d51c866d776285"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93b01252cfb016c623d51c866d776285">test_full_wrapping_board_dies</a> (self)</td></tr>
+<tr class="memdesc:a93b01252cfb016c623d51c866d776285"><td class="mdescLeft">&#160;</td><td class="mdescRight">With wrap=True (toroidal), a fully filled grid becomes empty after 1 step.  <br /></td></tr>
 <tr class="memitem:a50b01bd7b784012c960b2925003f8a5d" id="r_a50b01bd7b784012c960b2925003f8a5d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50b01bd7b784012c960b2925003f8a5d">test_full_board_bounded_differs</a> (self)</td></tr>
+<tr class="memdesc:a50b01bd7b784012c960b2925003f8a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">With wrap=False (bounded), a full 3x3 does not die completely: corners survive.  <br /></td></tr>
 <tr class="memitem:a92731cab83c265dc653a43c8b4053805" id="r_a92731cab83c265dc653a43c8b4053805"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92731cab83c265dc653a43c8b4053805">test_r_pentomino_chaos</a> (self)</td></tr>
+<tr class="memdesc:a92731cab83c265dc653a43c8b4053805"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 'R-pentomino' should evolve across first two steps without relying on exact coordinates.  <br /></td></tr>
 <tr class="memitem:af9546fa98304392aaa43ec4c71bbda83" id="r_af9546fa98304392aaa43ec4c71bbda83"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9546fa98304392aaa43ec4c71bbda83">test_get_state_is_defensive_copy</a> (self)</td></tr>
+<tr class="memdesc:af9546fa98304392aaa43ec4c71bbda83"><td class="mdescLeft">&#160;</td><td class="mdescRight">get_state() should return a copy, not a reference, to the internal state.  <br /></td></tr>
 <tr class="memitem:a5ec171bad6c0cef1b77144077f6391b3" id="r_a5ec171bad6c0cef1b77144077f6391b3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ec171bad6c0cef1b77144077f6391b3">test_constructor_validation</a> (self)</td></tr>
+<tr class="memdesc:a5ec171bad6c0cef1b77144077f6391b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor validates dimensions and wrap type.  <br /></td></tr>
 <tr class="memitem:a470d17222d599581254e36fdba8a4726" id="r_a470d17222d599581254e36fdba8a4726"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a470d17222d599581254e36fdba8a4726">test_bounding_box_helper</a> (self)</td></tr>
+<tr class="memdesc:a470d17222d599581254e36fdba8a4726"><td class="mdescLeft">&#160;</td><td class="mdescRight">The bounding_box helper should work correctly.  <br /></td></tr>
 <tr class="memitem:a54c7a31a613a90a22c9d98bde32d5eb5" id="r_a54c7a31a613a90a22c9d98bde32d5eb5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54c7a31a613a90a22c9d98bde32d5eb5">test_set_state_wraps_out_of_bounds</a> (self)</td></tr>
+<tr class="memdesc:a54c7a31a613a90a22c9d98bde32d5eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">set_state should normalize out-of-bounds coordinates when wrap=True.  <br /></td></tr>
 <tr class="memitem:a92680ed10241fad97bcd412f0ac05ed4" id="r_a92680ed10241fad97bcd412f0ac05ed4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92680ed10241fad97bcd412f0ac05ed4">test_set_state_ignores_out_of_bounds</a> (self)</td></tr>
+<tr class="memdesc:a92680ed10241fad97bcd412f0ac05ed4"><td class="mdescLeft">&#160;</td><td class="mdescRight">set_state should ignore out-of-bounds coordinates when wrap=False.  <br /></td></tr>
 <tr class="memitem:ad707d8cb2e3afa83668a917cd53552eb" id="r_ad707d8cb2e3afa83668a917cd53552eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad707d8cb2e3afa83668a917cd53552eb">test_set_state_rejects_invalid_types</a> (self)</td></tr>
+<tr class="memdesc:ad707d8cb2e3afa83668a917cd53552eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">set_state should raise ValueError on invalid entries (non 2-int tuples) with clear cases.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a418648df21e90ced3cba7ee39899e6ab" id="r_a418648df21e90ced3cba7ee39899e6ab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a418648df21e90ced3cba7ee39899e6ab">game</a> = <a class="el" href="classgame__of__life_1_1_game_of_life.html">GameOfLife</a>(10, 10, wrap=True)</td></tr>
+<tr class="memitem:a418648df21e90ced3cba7ee39899e6ab" id="r_a418648df21e90ced3cba7ee39899e6ab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a418648df21e90ced3cba7ee39899e6ab">game</a> = GameOfLife(10, 10, wrap=True)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><pre class="fragment">\
-@brief Comprehensive test cases for `GameOfLife` behaviors.
-@details Covers fundamental rules (under/overpopulation, survival, birth),
-canonical patterns (still lifes, oscillators, spaceship), edge wrapping,
-bounded vs toroidal differences, input validation, and helper invariants.
-Pattern tests emphasize invariants (population stability, translation,
-bounding box non-shrink) over brittle coordinate lists for dynamic patterns.
-</pre> </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>Comprehensive test cases for <span class="tt">GameOfLife</span> behaviors. </p>
+<p>Covers fundamental rules (under/overpopulation, survival, birth), canonical patterns (still lifes, oscillators, spaceship), edge wrapping, bounded vs toroidal differences, input validation, and helper invariants. Pattern tests emphasize invariants (population stability, translation, bounding box non-shrink) over brittle coordinate lists for dynamic patterns. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="abe55f9d8973875d6b18a53df6b989493" name="abe55f9d8973875d6b18a53df6b989493"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abe55f9d8973875d6b18a53df6b989493">&#9670;&#160;</a></span>setUp()</h2>
 
@@ -157,11 +184,11 @@ bounding box non-shrink) over brittle coordinate lists for dynamic patterns.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">\
-@brief Prepare a fresh 10x10 toroidal world for each test.
-@return None
-@details Ensures test isolation; wrap=True emphasizes torus behavior.
-</pre> 
+
+<p>Prepare a fresh 10x10 toroidal world for each test. </p>
+<dl class="section return"><dt>Returns</dt><dd>None</dd></dl>
+<p>Ensures test isolation; wrap=True emphasizes torus behavior. </p>
+
 </div>
 </div>
 <a id="a470d17222d599581254e36fdba8a4726" name="a470d17222d599581254e36fdba8a4726"></a>
@@ -178,7 +205,9 @@ bounding box non-shrink) over brittle coordinate lists for dynamic patterns.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">The bounding_box helper should work correctly.</pre> 
+
+<p>The bounding_box helper should work correctly. </p>
+
 </div>
 </div>
 <a id="a5ec171bad6c0cef1b77144077f6391b3" name="a5ec171bad6c0cef1b77144077f6391b3"></a>
@@ -195,7 +224,9 @@ bounding box non-shrink) over brittle coordinate lists for dynamic patterns.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Constructor validates dimensions and wrap type.</pre> 
+
+<p>Constructor validates dimensions and wrap type. </p>
+
 </div>
 </div>
 <a id="ad79ccdcb53b91e2b2b585cbf63314203" name="ad79ccdcb53b91e2b2b585cbf63314203"></a>
@@ -212,7 +243,9 @@ bounding box non-shrink) over brittle coordinate lists for dynamic patterns.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">An empty grid should remain empty.</pre> 
+
+<p>An empty grid should remain empty. </p>
+
 </div>
 </div>
 <a id="a50b01bd7b784012c960b2925003f8a5d" name="a50b01bd7b784012c960b2925003f8a5d"></a>
@@ -229,7 +262,9 @@ bounding box non-shrink) over brittle coordinate lists for dynamic patterns.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">With wrap=False (bounded), a full 3x3 does not die completely: corners survive.</pre> 
+
+<p>With wrap=False (bounded), a full 3x3 does not die completely: corners survive. </p>
+
 </div>
 </div>
 <a id="a93b01252cfb016c623d51c866d776285" name="a93b01252cfb016c623d51c866d776285"></a>
@@ -246,7 +281,9 @@ bounding box non-shrink) over brittle coordinate lists for dynamic patterns.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">With wrap=True (toroidal), a fully filled grid becomes empty after 1 step.</pre> 
+
+<p>With wrap=True (toroidal), a fully filled grid becomes empty after 1 step. </p>
+
 </div>
 </div>
 <a id="af9546fa98304392aaa43ec4c71bbda83" name="af9546fa98304392aaa43ec4c71bbda83"></a>
@@ -263,7 +300,9 @@ bounding box non-shrink) over brittle coordinate lists for dynamic patterns.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">get_state() should return a copy, not a reference, to the internal state.</pre> 
+
+<p>get_state() should return a copy, not a reference, to the internal state. </p>
+
 </div>
 </div>
 <a id="a44c33aee225fa473b357647978c52f39" name="a44c33aee225fa473b357647978c52f39"></a>
@@ -280,16 +319,11 @@ bounding box non-shrink) over brittle coordinate lists for dynamic patterns.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">The 'Blinker' should change orientation after 1 step.
 
-Initial Shape (Horizontal):
-.###.
+<p>The 'Blinker' should change orientation after 1 step. </p>
+<p>Initial Shape (Horizontal): .###.</p>
+<p>After 1 Step (Vertical): ..#.. ..#.. ..#.. </p>
 
-After 1 Step (Vertical):
-..#..
-..#..
-..#..
-</pre> 
 </div>
 </div>
 <a id="aa48cb1dbcdb13b2e065406a3d53f0d19" name="aa48cb1dbcdb13b2e065406a3d53f0d19"></a>
@@ -306,7 +340,9 @@ After 1 Step (Vertical):
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">The 'Blinker' should return to its initial state after 2 steps.</pre> 
+
+<p>The 'Blinker' should return to its initial state after 2 steps. </p>
+
 </div>
 </div>
 <a id="a7ca9ead53c3122f9d84325376afed5af" name="a7ca9ead53c3122f9d84325376afed5af"></a>
@@ -323,20 +359,11 @@ After 1 Step (Vertical):
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">The 'Toad' should transition to phase 2 after 1 step.
 
-Initial Shape (Phase 1):
-......
-..###.
-.###..
-......
+<p>The 'Toad' should transition to phase 2 after 1 step. </p>
+<p>Initial Shape (Phase 1): ...... ..###. .###.. ......</p>
+<p>After 1 Step (Phase 2): ...#.. .#..#. .#..#. ..#... </p>
 
-After 1 Step (Phase 2):
-...#..
-.#..#.
-.#..#.
-..#...
-</pre> 
 </div>
 </div>
 <a id="ab0eb502389935d4307a03565d11bf3c3" name="ab0eb502389935d4307a03565d11bf3c3"></a>
@@ -353,7 +380,9 @@ After 1 Step (Phase 2):
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">The 'Toad' returns to its initial state after 2 steps (period-2).</pre> 
+
+<p>The 'Toad' returns to its initial state after 2 steps (period-2). </p>
+
 </div>
 </div>
 <a id="ae0e3bcc0ca2865f909aa13d542781749" name="ae0e3bcc0ca2865f909aa13d542781749"></a>
@@ -370,7 +399,9 @@ After 1 Step (Phase 2):
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">A live cell (5, 5) with 4 neighbors should die.</pre> 
+
+<p>A live cell (5, 5) with 4 neighbors should die. </p>
+
 </div>
 </div>
 <a id="a92731cab83c265dc653a43c8b4053805" name="a92731cab83c265dc653a43c8b4053805"></a>
@@ -387,13 +418,13 @@ After 1 Step (Phase 2):
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">The 'R-pentomino' should evolve across first two steps without relying on exact coordinates.
 
-Initial Shape:
-.##.
-##..
-.#..
-</pre> 
+<p>The 'R-pentomino' should evolve across first two steps without relying on exact coordinates. </p>
+<p>Initial Shape: .##. </p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+..</h2>
+<p>.#.. </p>
+
 </div>
 </div>
 <a id="a3a55de59b64c9876f4cfa0e5999232f5" name="a3a55de59b64c9876f4cfa0e5999232f5"></a>
@@ -410,7 +441,9 @@ Initial Shape:
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">A dead cell (5, 5) with 3 neighbors should become alive.</pre> 
+
+<p>A dead cell (5, 5) with 3 neighbors should become alive. </p>
+
 </div>
 </div>
 <a id="a92680ed10241fad97bcd412f0ac05ed4" name="a92680ed10241fad97bcd412f0ac05ed4"></a>
@@ -427,7 +460,9 @@ Initial Shape:
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">set_state should ignore out-of-bounds coordinates when wrap=False.</pre> 
+
+<p>set_state should ignore out-of-bounds coordinates when wrap=False. </p>
+
 </div>
 </div>
 <a id="ad707d8cb2e3afa83668a917cd53552eb" name="ad707d8cb2e3afa83668a917cd53552eb"></a>
@@ -444,7 +479,9 @@ Initial Shape:
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">set_state should raise ValueError on invalid entries (non 2-int tuples) with clear cases.</pre> 
+
+<p>set_state should raise ValueError on invalid entries (non 2-int tuples) with clear cases. </p>
+
 </div>
 </div>
 <a id="a54c7a31a613a90a22c9d98bde32d5eb5" name="a54c7a31a613a90a22c9d98bde32d5eb5"></a>
@@ -461,7 +498,9 @@ Initial Shape:
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">set_state should normalize out-of-bounds coordinates when wrap=True.</pre> 
+
+<p>set_state should normalize out-of-bounds coordinates when wrap=True. </p>
+
 </div>
 </div>
 <a id="adf5ac48d8ea4689fa6738b8c06064357" name="adf5ac48d8ea4689fa6738b8c06064357"></a>
@@ -478,19 +517,13 @@ Initial Shape:
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">The 'Glider' should move diagonally after 4 steps.
 
-Initial Shape:
-.#..
-..#.
-###.
+<p>The 'Glider' should move diagonally after 4 steps. </p>
+<p>Initial Shape: .#.. ..#. </p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+.</h3>
+<p>After 4 Steps: .... ..#. ...# .### </p>
 
-After 4 Steps:
-....
-..#.
-...#
-.###
-</pre> 
 </div>
 </div>
 <a id="a0bc80a2bb36f08246784b873cf1b7e1d" name="a0bc80a2bb36f08246784b873cf1b7e1d"></a>
@@ -507,7 +540,9 @@ After 4 Steps:
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">A dead cell (5, 5) with 2 or 4 neighbors should remain dead.</pre> 
+
+<p>A dead cell (5, 5) with 2 or 4 neighbors should remain dead. </p>
+
 </div>
 </div>
 <a id="a6525a0e0ecf6c0f03a52213c29564ea8" name="a6525a0e0ecf6c0f03a52213c29564ea8"></a>
@@ -524,14 +559,10 @@ After 4 Steps:
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">The 'Beehive' pattern should remain stable.
 
-Shape:
-.##.
-#..#
-.##.
-Centered around (2,2), (3, 2)
-</pre> 
+<p>The 'Beehive' pattern should remain stable. </p>
+<p>Shape: .##. #..# .##. Centered around (2,2), (3, 2) </p>
+
 </div>
 </div>
 <a id="a0d32880aeeb2e7924bb5a3d5d2087491" name="a0d32880aeeb2e7924bb5a3d5d2087491"></a>
@@ -548,13 +579,15 @@ Centered around (2,2), (3, 2)
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">The 'Block' pattern should remain stable.
 
-Shape (2x2):
-##
-##
-Top-left at (1,1)
-</pre> 
+<p>The 'Block' pattern should remain stable. </p>
+<p>Shape (2x2): </p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+autotoc_md1</h2>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+autotoc_md2</h2>
+<p>Top-left at (1,1) </p>
+
 </div>
 </div>
 <a id="a96fa53613c77d31972acf2894279d86b" name="a96fa53613c77d31972acf2894279d86b"></a>
@@ -571,14 +604,13 @@ Top-left at (1,1)
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">The 'Boat' pattern should remain stable.
 
-Shape:
-##.
-#.#
-.#.
-Top-left at (0,0)
-</pre> 
+<p>The 'Boat' pattern should remain stable. </p>
+<p>Shape: </p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+.</h2>
+<p>#.# .#. Top-left at (0,0) </p>
+
 </div>
 </div>
 <a id="a72b8f5836cd57da810fdc3c5e8fec579" name="a72b8f5836cd57da810fdc3c5e8fec579"></a>
@@ -595,7 +627,9 @@ Top-left at (0,0)
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">A live cell (5, 5) with 2 neighbors should survive.</pre> 
+
+<p>A live cell (5, 5) with 2 neighbors should survive. </p>
+
 </div>
 </div>
 <a id="a78998e27442d025c42d0d663706de6b1" name="a78998e27442d025c42d0d663706de6b1"></a>
@@ -612,7 +646,9 @@ Top-left at (0,0)
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">A live cell (5, 5) with 3 neighbors should survive.</pre> 
+
+<p>A live cell (5, 5) with 3 neighbors should survive. </p>
+
 </div>
 </div>
 <a id="acaac0929702fbfdfc4d8eeedcc87b625" name="acaac0929702fbfdfc4d8eeedcc87b625"></a>
@@ -629,7 +665,9 @@ Top-left at (0,0)
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">A 'Blinker' crossing the edge should oscillate correctly.</pre> 
+
+<p>A 'Blinker' crossing the edge should oscillate correctly. </p>
+
 </div>
 </div>
 <a id="a7234c17b52eeb3197ea5a4a42a5a31dd" name="a7234c17b52eeb3197ea5a4a42a5a31dd"></a>
@@ -646,7 +684,9 @@ Top-left at (0,0)
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">A cell (9, 5) on the right edge should die from 4 neighbors wrapping around.</pre> 
+
+<p>A cell (9, 5) on the right edge should die from 4 neighbors wrapping around. </p>
+
 </div>
 </div>
 <a id="af67dc9eff7b2ff0036034009fa0bf275" name="af67dc9eff7b2ff0036034009fa0bf275"></a>
@@ -663,7 +703,9 @@ Top-left at (0,0)
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">A cell (0, 0) should be born from neighbors wrapping around the edges.</pre> 
+
+<p>A cell (0, 0) should be born from neighbors wrapping around the edges. </p>
+
 </div>
 </div>
 <a id="a674a070541289e1d167edb9e3cfd4f17" name="a674a070541289e1d167edb9e3cfd4f17"></a>
@@ -680,7 +722,9 @@ Top-left at (0,0)
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">A cell (5, 9) on the bottom edge should survive with 2 neighbors wrapping around.</pre> 
+
+<p>A cell (5, 9) on the bottom edge should survive with 2 neighbors wrapping around. </p>
+
 </div>
 </div>
 <a id="aaea62b416740513d47677c8687cc369b" name="aaea62b416740513d47677c8687cc369b"></a>
@@ -697,7 +741,9 @@ Top-left at (0,0)
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">A live cell (5, 5) with 1 neighbor should die.</pre> 
+
+<p>A live cell (5, 5) with 1 neighbor should die. </p>
+
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
@@ -708,7 +754,7 @@ Top-left at (0,0)
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">test_game_of_life.TestGameOfLife.game = <a class="el" href="classgame__of__life_1_1_game_of_life.html">GameOfLife</a>(10, 10, wrap=True)</td>
+          <td class="memname">test_game_of_life.TestGameOfLife.game = GameOfLife(10, 10, wrap=True)</td>
         </tr>
       </table>
 </div><div class="memdoc">
