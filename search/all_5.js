@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['game_0',['game',['../classtest__game__of__life_1_1TestGameOfLife.html#a418648df21e90ced3cba7ee39899e6ab',1,'test_game_of_life::TestGameOfLife']]],
-  ['game_5fof_5flife_1',['game_of_life',['../namespacegame__of__life.html',1,'']]],
-  ['game_5fof_5flife_2epy_2',['game_of_life.py',['../game__of__life_8py.html',1,'']]]
+  ['coordinates_20are_20ignored_0',['3x3 bounded world where out-of-bounds coordinates are ignored',['..//home/runner/work/dev-tools-lab-1/dev-tools-lab-1/game_of_life.py#autotoc_md0',1,'']]]
 ];
