@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "Lab 2 Docs", "index.html", [
+    [ "Conway's Game of Life", "index.html", "index" ],
     [ "Packages", "namespaces.html", [
       [ "Package List", "namespaces.html", "namespaces_dup" ],
       [ "Package Members", "namespacemembers.html", [

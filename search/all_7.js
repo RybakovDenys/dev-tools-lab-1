@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['height_0',['height',['../classgame__of__life_1_1GameOfLife.html#ad3b1407ad7fe9dbd0506d8db19fed25c',1,'game_of_life::GameOfLife']]]
+  ['example_20usage_0',['Example Usage',['../index.html#autotoc_md11',1,'']]]
 ];

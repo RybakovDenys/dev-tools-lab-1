@@ -1,11 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "3_abcghilostvw",
+  0: "3_abcdefghilorstuvw",
   1: "gt",
   2: "gt",
-  3: "gt",
+  3: "grt",
   4: "_gst",
-  5: "ghlvw"
+  5: "ghlvw",
+  6: "cglos"
 };
 
 var indexSectionNames =
@@ -15,7 +16,8 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "variables"
+  5: "variables",
+  6: "pages"
 };
 
 var indexSectionLabels =
@@ -25,6 +27,7 @@ var indexSectionLabels =
   2: "Namespaces",
   3: "Files",
   4: "Functions",
-  5: "Variables"
+  5: "Variables",
+  6: "Pages"
 };
 
