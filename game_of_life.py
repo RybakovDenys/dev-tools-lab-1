@@ -17,13 +17,6 @@
 # Construction validates dimensions (>0) and wrap flag type. Live cells are
 # stored in a Python set for O(1) membership tests. Neighbor enumeration
 # respects wrapping or bounded edges based on the wrap flag.
-#
-# @example Constructing bounded (non-wrapping) world
-#     # 3x3 bounded world where out-of-bounds coordinates are ignored
-#     bounded = GameOfLife(3, 3, wrap=False)
-#     bounded.set_state({(-1,0), (1,1), (3,2)})  # only (1,1) kept
-#     bounded.step()
-#     print(bounded.get_state())
 class GameOfLife:
     
     ##
@@ -34,9 +27,6 @@ class GameOfLife:
     # @param wrap If True, world is toroidal (edges wrap); if False, bounded.
     # @throws ValueError If width <= 0 or height <= 0.
     # @throws TypeError If wrap is not a bool.
-    # @example Creating worlds
-    #     torus = GameOfLife(10, 10, wrap=True)
-    #     bounded = GameOfLife(10, 10, wrap=False)
     def __init__(self, width: int, height: int, wrap: bool = True):
         if width <= 0 or height <= 0:
             raise ValueError("Width and height must be positive integers")
@@ -60,15 +50,6 @@ class GameOfLife:
     #
     # Internal state is replaced (not merged). A defensive copy is taken in
     # subsequent get_state calls.
-    #
-    # @example Normalizing with wrap
-    #     gol = GameOfLife(5, 5, wrap=True)
-    #     gol.set_state({(-1,-1), (5,5), (2,2)})  # becomes {(4,4), (0,0), (2,2)}
-    #     print(sorted(gol.get_state()))
-    # @example Ignoring out-of-bounds in bounded mode
-    #     bounded = GameOfLife(3, 3, wrap=False)
-    #     bounded.set_state({(-1,-1), (0,0), (2,2), (3,3)})  # keeps (0,0), (2,2)
-    #     print(sorted(bounded.get_state()))  # [(0,0), (2,2)]
     def set_state(self, initial_live_cells: set):
         normalized = set()
         for item in initial_live_cells:
@@ -90,12 +71,6 @@ class GameOfLife:
     # @brief Retrieve the current live cell set.
     # @return A defensive (shallow) copy of the internal live cell set.
     # @details Mutating the returned set does not affect internal state.
-    # @example Defensive copy
-    #     gol = GameOfLife(3,3)
-    #     gol.set_state({(1,1)})
-    #     s = gol.get_state()
-    #     s.add((2,2))  # internal state unchanged
-    #     assert gol.get_state() == {(1,1)}
     def get_state(self) -> set:
         return self.live_cells.copy()
 
@@ -131,11 +106,6 @@ class GameOfLife:
     #     1. Survival: live cell with 2 or 3 neighbors stays alive.
     #     2. Birth: dead cell with exactly 3 neighbors becomes alive.
     #     3. Death: other live cells die (<2 or >3 neighbors).
-    # @example One step evolution
-    #     gol = GameOfLife(5,5)
-    #     gol.set_state({(1,1), (2,1), (3,1)})  # blinker horizontal
-    #     gol.step()  # becomes vertical
-    #     print(sorted(gol.get_state()))  # [(2,0), (2,1), (2,2)]
     def step(self):
         next_live_cells = set()
         
