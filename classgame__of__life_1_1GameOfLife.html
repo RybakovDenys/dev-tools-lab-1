@@ -97,16 +97,23 @@ $(document).ready(function(){initNavTree('classgame__of__life_1_1GameOfLife.html
   <div class="headertitle"><div class="title">game_of_life.GameOfLife Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>GameOfLife simulation class.  
+ <a href="classgame__of__life_1_1GameOfLife.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a71da5a2963543efbfc229dac9351da63" id="r_a71da5a2963543efbfc229dac9351da63"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame__of__life_1_1GameOfLife.html#a71da5a2963543efbfc229dac9351da63">__init__</a> (self, int <a class="el" href="classgame__of__life_1_1GameOfLife.html#a302f90b4555ce3e0ddee08dfe57731ad">width</a>, int <a class="el" href="classgame__of__life_1_1GameOfLife.html#ad3b1407ad7fe9dbd0506d8db19fed25c">height</a>, bool <a class="el" href="classgame__of__life_1_1GameOfLife.html#a99ca0da80d2ebde6208fb4b43ec41527">wrap</a>=True)</td></tr>
+<tr class="memdesc:a71da5a2963543efbfc229dac9351da63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a new Game of Life world.  <br /></td></tr>
 <tr class="separator:a71da5a2963543efbfc229dac9351da63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59323c36aa100c86adabdc8d7c26d048" id="r_a59323c36aa100c86adabdc8d7c26d048"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame__of__life_1_1GameOfLife.html#a59323c36aa100c86adabdc8d7c26d048">set_state</a> (self, set initial_live_cells)</td></tr>
+<tr class="memdesc:a59323c36aa100c86adabdc8d7c26d048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set (replace) the current set of live cells.  <br /></td></tr>
 <tr class="separator:a59323c36aa100c86adabdc8d7c26d048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6a38c49e00b410f85393b582a114b71" id="r_aa6a38c49e00b410f85393b582a114b71"><td class="memItemLeft" align="right" valign="top">set&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame__of__life_1_1GameOfLife.html#aa6a38c49e00b410f85393b582a114b71">get_state</a> (self)</td></tr>
+<tr class="memdesc:aa6a38c49e00b410f85393b582a114b71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the current live cell set.  <br /></td></tr>
 <tr class="separator:aa6a38c49e00b410f85393b582a114b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99fbd85319ec0a4644c716b6fec44fe8" id="r_a99fbd85319ec0a4644c716b6fec44fe8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame__of__life_1_1GameOfLife.html#a99fbd85319ec0a4644c716b6fec44fe8">step</a> (self)</td></tr>
+<tr class="memdesc:a99fbd85319ec0a4644c716b6fec44fe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance simulation by one generation.  <br /></td></tr>
 <tr class="separator:a99fbd85319ec0a4644c716b6fec44fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -126,7 +133,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:a22322501e07212bbc28672c850b7de84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count live neighbors around (x,y) (internal helper).  <br /></td></tr>
 <tr class="separator:a22322501e07212bbc28672c850b7de84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>GameOfLife simulation class. </p>
+<p>Manages live cell state and applies Conway rules per generation. Construction validates dimensions (&gt;0) and wrap flag type. Live cells are stored in a Python set for O(1) membership tests. Neighbor enumeration respects wrapping or bounded edges based on the wrap flag. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a71da5a2963543efbfc229dac9351da63" name="a71da5a2963543efbfc229dac9351da63"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a71da5a2963543efbfc229dac9351da63">&#9670;&#160;</a></span>__init__()</h2>
 
@@ -164,6 +174,23 @@ Protected Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initialize a new Game of Life world. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>Positive integer width (columns). </td></tr>
+    <tr><td class="paramname">height</td><td>Positive integer height (rows). </td></tr>
+    <tr><td class="paramname">wrap</td><td>If True, world is toroidal (edges wrap); if False, bounded. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ValueError</td><td>If width &lt;= 0 or height &lt;= 0. </td></tr>
+    <tr><td class="paramname">TypeError</td><td>If wrap is not a bool. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -237,6 +264,10 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Retrieve the current live cell set. </p>
+<dl class="section return"><dt>Returns</dt><dd>A defensive (shallow) copy of the internal live cell set.</dd></dl>
+<p>Mutating the returned set does not affect internal state. </p>
+
 </div>
 </div>
 <a id="a59323c36aa100c86adabdc8d7c26d048" name="a59323c36aa100c86adabdc8d7c26d048"></a>
@@ -265,6 +296,26 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set (replace) the current set of live cells. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">initial_live_cells</td><td>Set of (x,y) integer tuples designating live cells. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ValueError</td><td>If any element is not a 2-int tuple.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Behavior by mode:</p><ul>
+<li>wrap=True: Out-of-bounds coordinates are normalized modulo width/height.</li>
+<li>wrap=False: Out-of-bounds coordinates are ignored (not added).</li>
+</ul>
+<p>Internal state is replaced (not merged). A defensive copy is taken in subsequent get_state calls. </p>
+
 </div>
 </div>
 <a id="a99fbd85319ec0a4644c716b6fec44fe8" name="a99fbd85319ec0a4644c716b6fec44fe8"></a>
@@ -282,6 +333,14 @@ Protected Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Advance simulation by one generation. </p>
+<dl class="section return"><dt>Returns</dt><dd>None</dd></dl>
+<p>Applies Conway rules:</p><ol type="1">
+<li>Survival: live cell with 2 or 3 neighbors stays alive.</li>
+<li>Birth: dead cell with exactly 3 neighbors becomes alive.</li>
+<li>Death: other live cells die (&lt;2 or &gt;3 neighbors). </li>
+</ol>
 
 </div>
 </div>

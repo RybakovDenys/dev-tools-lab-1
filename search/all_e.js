@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['readme_2emd_0',['README.md',['../README_8md.html',1,'']]],
-  ['rules_20of_20the_20game_1',['Rules of the Game',['../index.html#autotoc_md10',1,'']]],
-  ['run_2',['How to Run',['../index.html#autotoc_md9',1,'']]]
+  ['verbosity_0',['verbosity',['../namespacetest__game__of__life.html#aef7fe07d77c29fd5670ae5bb81dfa85f',1,'test_game_of_life']]]
 ];

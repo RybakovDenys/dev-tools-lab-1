@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['3x3_20bounded_20world_20where_20out_20of_20bounds_20coordinates_20are_20ignored_0',['3x3 bounded world where out-of-bounds coordinates are ignored',['..//home/runner/work/dev-tools-lab-1/dev-tools-lab-1/game_of_life.py#autotoc_md0',1,'']]]
+  ['_5f_5finit_5f_5f_0',['__init__',['../classgame__of__life_1_1GameOfLife.html#a71da5a2963543efbfc229dac9351da63',1,'game_of_life::GameOfLife']]],
+  ['_5fget_5fneighbors_5fcount_1',['_get_neighbors_count',['../classgame__of__life_1_1GameOfLife.html#a22322501e07212bbc28672c850b7de84',1,'game_of_life::GameOfLife']]]
 ];

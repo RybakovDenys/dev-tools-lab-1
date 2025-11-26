@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['height_0',['height',['../classgame__of__life_1_1GameOfLife.html#ad3b1407ad7fe9dbd0506d8db19fed25c',1,'game_of_life::GameOfLife']]],
-  ['how_20to_20run_1',['How to Run',['../index.html#autotoc_md9',1,'']]]
+  ['readme_2emd_0',['README.md',['../README_8md.html',1,'']]],
+  ['rules_20of_20the_20game_1',['Rules of the Game',['../index.html#autotoc_md9',1,'']]],
+  ['run_2',['How to Run',['../index.html#autotoc_md8',1,'']]]
 ];
