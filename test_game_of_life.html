@@ -45,7 +45,45 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">dev-tools-lab-1</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="game_of_life.html">game_of_life module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">test_game_of_life module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">test_game_of_life module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#test_game_of_life.TestGameOfLife"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.setUp"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_bounding_box_helper"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_bounding_box_helper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_constructor_validation"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_constructor_validation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_empty_board"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_empty_board()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_full_board_bounded_differs"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_full_board_bounded_differs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_full_wrapping_board_dies"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_full_wrapping_board_dies()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_get_state_is_defensive_copy"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_get_state_is_defensive_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_oscillator_blinker_period_1"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_oscillator_blinker_period_1()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_oscillator_blinker_period_2"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_oscillator_blinker_period_2()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_oscillator_toad_period_1"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_oscillator_toad_period_1()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_oscillator_toad_period_2"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_oscillator_toad_period_2()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_overpopulation"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_overpopulation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_r_pentomino_chaos"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_r_pentomino_chaos()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_reproduction"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_reproduction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_set_state_ignores_out_of_bounds"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_set_state_ignores_out_of_bounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_set_state_rejects_invalid_types"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_set_state_rejects_invalid_types()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_set_state_wraps_out_of_bounds"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_set_state_wraps_out_of_bounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_spaceship_glider_move"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_spaceship_glider_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_stasis_dead_cell"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_stasis_dead_cell()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_still_life_beehive"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_still_life_beehive()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_still_life_block"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_still_life_block()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_still_life_boat"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_still_life_boat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_survival_2_neighbors"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_survival_2_neighbors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_survival_3_neighbors"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_survival_3_neighbors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_torus_blinker_on_edge"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_torus_blinker_on_edge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_torus_overpopulation_right_edge"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_torus_overpopulation_right_edge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_torus_reproduction_top_left_corner"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_torus_reproduction_top_left_corner()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_torus_survival_bottom_edge"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_torus_survival_bottom_edge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test_game_of_life.TestGameOfLife.test_underpopulation"><code class="docutils literal notranslate"><span class="pre">TestGameOfLife.test_underpopulation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#test_game_of_life.bounding_box"><code class="docutils literal notranslate"><span class="pre">bounding_box()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test_game_of_life.canonicalize"><code class="docutils literal notranslate"><span class="pre">canonicalize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test_game_of_life.coords"><code class="docutils literal notranslate"><span class="pre">coords()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test_game_of_life.translate"><code class="docutils literal notranslate"><span class="pre">translate()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -75,8 +113,315 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="test-game-of-life-module">
-<h1>test_game_of_life module<a class="headerlink" href="#test-game-of-life-module" title="Link to this heading"></a></h1>
+  <section id="module-test_game_of_life">
+<span id="test-game-of-life-module"></span><h1>test_game_of_life module<a class="headerlink" href="#module-test_game_of_life" title="Link to this heading"></a></h1>
+<p>Test suite for GameOfLife.</p>
+<p>Coordinate system:
+- We use (x, y) tuples as (column, row).
+- Origin (0, 0) is the top-left corner.
+- x increases to the right; y increases downward (like terminal rows).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">test_game_of_life.</span></span><span class="sig-name descname"><span class="pre">TestGameOfLife</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<p>Unit tests for the GameOfLife class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.setUp" title="Link to this definition"></a></dt>
+<dd><p>Sets up a clean 10x10 grid before each test.</p>
+<p>The grid uses toroidal (wrapping) behavior at the edges.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_bounding_box_helper">
+<span class="sig-name descname"><span class="pre">test_bounding_box_helper</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_bounding_box_helper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_bounding_box_helper" title="Link to this definition"></a></dt>
+<dd><p>The bounding_box helper should work correctly.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_constructor_validation">
+<span class="sig-name descname"><span class="pre">test_constructor_validation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_constructor_validation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_constructor_validation" title="Link to this definition"></a></dt>
+<dd><p>Constructor validates dimensions and wrap type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_empty_board">
+<span class="sig-name descname"><span class="pre">test_empty_board</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_empty_board"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_empty_board" title="Link to this definition"></a></dt>
+<dd><p>An empty grid should remain empty.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_full_board_bounded_differs">
+<span class="sig-name descname"><span class="pre">test_full_board_bounded_differs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_full_board_bounded_differs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_full_board_bounded_differs" title="Link to this definition"></a></dt>
+<dd><p>With wrap=False (bounded), a full 3x3 does not die completely: corners survive.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_full_wrapping_board_dies">
+<span class="sig-name descname"><span class="pre">test_full_wrapping_board_dies</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_full_wrapping_board_dies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_full_wrapping_board_dies" title="Link to this definition"></a></dt>
+<dd><p>With wrap=True (toroidal), a fully filled grid becomes empty after 1 step.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_get_state_is_defensive_copy">
+<span class="sig-name descname"><span class="pre">test_get_state_is_defensive_copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_get_state_is_defensive_copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_get_state_is_defensive_copy" title="Link to this definition"></a></dt>
+<dd><p>get_state() should return a copy, not a reference, to the internal state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_oscillator_blinker_period_1">
+<span class="sig-name descname"><span class="pre">test_oscillator_blinker_period_1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_oscillator_blinker_period_1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_oscillator_blinker_period_1" title="Link to this definition"></a></dt>
+<dd><p>The ‘Blinker’ should change orientation after 1 step.</p>
+<p>Initial Shape (Horizontal):
+.###.</p>
+<p>After 1 Step (Vertical):
+..#..
+..#..
+..#..</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_oscillator_blinker_period_2">
+<span class="sig-name descname"><span class="pre">test_oscillator_blinker_period_2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_oscillator_blinker_period_2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_oscillator_blinker_period_2" title="Link to this definition"></a></dt>
+<dd><p>The ‘Blinker’ should return to its initial state after 2 steps.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_oscillator_toad_period_1">
+<span class="sig-name descname"><span class="pre">test_oscillator_toad_period_1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_oscillator_toad_period_1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_oscillator_toad_period_1" title="Link to this definition"></a></dt>
+<dd><p>The ‘Toad’ should transition to phase 2 after 1 step.</p>
+<section id="initial-shape-phase-1">
+<h2>Initial Shape (Phase 1):<a class="headerlink" href="#initial-shape-phase-1" title="Link to this heading"></a></h2>
+<p>..###.
+.###..
+……</p>
+<p>After 1 Step (Phase 2):
+…#..
+.#..#.
+.#..#.
+..#…</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_oscillator_toad_period_2">
+<span class="sig-name descname"><span class="pre">test_oscillator_toad_period_2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_oscillator_toad_period_2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_oscillator_toad_period_2" title="Link to this definition"></a></dt>
+<dd><p>The ‘Toad’ returns to its initial state after 2 steps (period-2).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_overpopulation">
+<span class="sig-name descname"><span class="pre">test_overpopulation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_overpopulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_overpopulation" title="Link to this definition"></a></dt>
+<dd><p>Tests that a live cell with more than 3 neighbors dies due to overpopulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_r_pentomino_chaos">
+<span class="sig-name descname"><span class="pre">test_r_pentomino_chaos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_r_pentomino_chaos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_r_pentomino_chaos" title="Link to this definition"></a></dt>
+<dd><p>The ‘R-pentomino’ should evolve across first two steps without relying on exact coordinates.</p>
+<p>Initial Shape:
+.##.
+##..
+.#..</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_reproduction">
+<span class="sig-name descname"><span class="pre">test_reproduction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_reproduction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_reproduction" title="Link to this definition"></a></dt>
+<dd><p>Tests that a dead cell with exactly 3 neighbors becomes alive.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_set_state_ignores_out_of_bounds">
+<span class="sig-name descname"><span class="pre">test_set_state_ignores_out_of_bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_set_state_ignores_out_of_bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_set_state_ignores_out_of_bounds" title="Link to this definition"></a></dt>
+<dd><p>set_state should ignore out-of-bounds coordinates when wrap=False.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_set_state_rejects_invalid_types">
+<span class="sig-name descname"><span class="pre">test_set_state_rejects_invalid_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_set_state_rejects_invalid_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_set_state_rejects_invalid_types" title="Link to this definition"></a></dt>
+<dd><p>set_state should raise ValueError on invalid entries (non 2-int tuples) with clear cases.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_set_state_wraps_out_of_bounds">
+<span class="sig-name descname"><span class="pre">test_set_state_wraps_out_of_bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_set_state_wraps_out_of_bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_set_state_wraps_out_of_bounds" title="Link to this definition"></a></dt>
+<dd><p>set_state should normalize out-of-bounds coordinates when wrap=True.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_spaceship_glider_move">
+<span class="sig-name descname"><span class="pre">test_spaceship_glider_move</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_spaceship_glider_move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_spaceship_glider_move" title="Link to this definition"></a></dt>
+<dd><p>The ‘Glider’ should move diagonally after 4 steps.</p>
+<p>Initial Shape:
+.#..
+..#.
+###.</p>
+<section id="after-4-steps">
+<h2>After 4 Steps:<a class="headerlink" href="#after-4-steps" title="Link to this heading"></a></h2>
+<p>..#.
+…#
+.###</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_stasis_dead_cell">
+<span class="sig-name descname"><span class="pre">test_stasis_dead_cell</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_stasis_dead_cell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_stasis_dead_cell" title="Link to this definition"></a></dt>
+<dd><p>A dead cell (5, 5) with 2 or 4 neighbors should remain dead.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_still_life_beehive">
+<span class="sig-name descname"><span class="pre">test_still_life_beehive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_still_life_beehive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_still_life_beehive" title="Link to this definition"></a></dt>
+<dd><p>The ‘Beehive’ pattern should remain stable.</p>
+<p>Shape:
+.##.
+#..#
+.##.
+Centered around (2,2), (3, 2)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_still_life_block">
+<span class="sig-name descname"><span class="pre">test_still_life_block</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_still_life_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_still_life_block" title="Link to this definition"></a></dt>
+<dd><p>The ‘Block’ pattern should remain stable.</p>
+<p>Shape (2x2):
+##
+##
+Top-left at (1,1)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_still_life_boat">
+<span class="sig-name descname"><span class="pre">test_still_life_boat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_still_life_boat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_still_life_boat" title="Link to this definition"></a></dt>
+<dd><p>The ‘Boat’ pattern should remain stable.</p>
+<p>Shape:
+##.
+#.#
+.#.
+Top-left at (0,0)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_survival_2_neighbors">
+<span class="sig-name descname"><span class="pre">test_survival_2_neighbors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_survival_2_neighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_survival_2_neighbors" title="Link to this definition"></a></dt>
+<dd><p>Tests that a live cell with 2 neighbors survives.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_survival_3_neighbors">
+<span class="sig-name descname"><span class="pre">test_survival_3_neighbors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_survival_3_neighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_survival_3_neighbors" title="Link to this definition"></a></dt>
+<dd><p>Tests that a live cell with 3 neighbors survives.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_torus_blinker_on_edge">
+<span class="sig-name descname"><span class="pre">test_torus_blinker_on_edge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_torus_blinker_on_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_torus_blinker_on_edge" title="Link to this definition"></a></dt>
+<dd><p>A ‘Blinker’ crossing the edge should oscillate correctly.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_torus_overpopulation_right_edge">
+<span class="sig-name descname"><span class="pre">test_torus_overpopulation_right_edge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_torus_overpopulation_right_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_torus_overpopulation_right_edge" title="Link to this definition"></a></dt>
+<dd><p>A cell (9, 5) on the right edge should die from 4 neighbors wrapping around.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_torus_reproduction_top_left_corner">
+<span class="sig-name descname"><span class="pre">test_torus_reproduction_top_left_corner</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_torus_reproduction_top_left_corner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_torus_reproduction_top_left_corner" title="Link to this definition"></a></dt>
+<dd><p>A cell (0, 0) should be born from neighbors wrapping around the edges.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_torus_survival_bottom_edge">
+<span class="sig-name descname"><span class="pre">test_torus_survival_bottom_edge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_torus_survival_bottom_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_torus_survival_bottom_edge" title="Link to this definition"></a></dt>
+<dd><p>A cell (5, 9) on the bottom edge should survive with 2 neighbors wrapping around.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test_game_of_life.TestGameOfLife.test_underpopulation">
+<span class="sig-name descname"><span class="pre">test_underpopulation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#TestGameOfLife.test_underpopulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.TestGameOfLife.test_underpopulation" title="Link to this definition"></a></dt>
+<dd><p>Tests that a live cell with 1 neighbor dies due to underpopulation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test_game_of_life.bounding_box">
+<span class="sig-prename descclassname"><span class="pre">test_game_of_life.</span></span><span class="sig-name descname"><span class="pre">bounding_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/test_game_of_life.html#bounding_box"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.bounding_box" title="Link to this definition"></a></dt>
+<dd><p>Computes the bounding box of a set of cells.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cells</strong> (<em>set</em><em>[</em><em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>]</em>) – A set of (x, y) tuples representing cell coordinates.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The bounding box as (min_x, min_y, max_x, max_y),
+or None if the set is empty.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[int, int, int, int] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test_game_of_life.canonicalize">
+<span class="sig-prename descclassname"><span class="pre">test_game_of_life.</span></span><span class="sig-name descname"><span class="pre">canonicalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/test_game_of_life.html#canonicalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.canonicalize" title="Link to this definition"></a></dt>
+<dd><p>Normalizes a set of cells so the top-left cell is at (0, 0).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cells</strong> (<em>set</em><em>[</em><em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>]</em>) – A set of (x, y) tuples representing cell coordinates.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The normalized set of (x, y) tuples.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>set[tuple[int, int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test_game_of_life.coords">
+<span class="sig-prename descclassname"><span class="pre">test_game_of_life.</span></span><span class="sig-name descname"><span class="pre">coords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">pairs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game_of_life.html#coords"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.coords" title="Link to this definition"></a></dt>
+<dd><p>Helper function to create a set of coordinate tuples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*pairs</strong> – Variadic arguments representing (x, y) tuples.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A set of (x, y) tuples.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>set[tuple[int, int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test_game_of_life.translate">
+<span class="sig-prename descclassname"><span class="pre">test_game_of_life.</span></span><span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/test_game_of_life.html#translate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game_of_life.translate" title="Link to this definition"></a></dt>
+<dd><p>Translates a set of cells by (dx, dy), optionally wrapping coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cells</strong> (<em>set</em><em>[</em><em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>]</em>) – A set of (x, y) tuples representing cell coordinates.</p></li>
+<li><p><strong>dx</strong> (<em>int</em>) – The horizontal translation.</p></li>
+<li><p><strong>dy</strong> (<em>int</em>) – The vertical translation.</p></li>
+<li><p><strong>width</strong> (<em>int</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – The width for wrapping. Defaults to None.</p></li>
+<li><p><strong>height</strong> (<em>int</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – The height for wrapping. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The translated set of (x, y) tuples.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>set[tuple[int, int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

@@ -1,0 +1,614 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>test_game_of_life &mdash; Dev lab  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Dev lab
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">dev-tools-lab-1</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Dev lab</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">test_game_of_life</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for test_game_of_life</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Test suite for GameOfLife.</span>
+
+<span class="sd">Coordinate system:</span>
+<span class="sd">- We use (x, y) tuples as (column, row).</span>
+<span class="sd">- Origin (0, 0) is the top-left corner.</span>
+<span class="sd">- x increases to the right; y increases downward (like terminal rows).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">game_of_life</span><span class="w"> </span><span class="kn">import</span> <span class="n">GameOfLife</span>
+
+
+<div class="viewcode-block" id="bounding_box">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.bounding_box">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">bounding_box</span><span class="p">(</span><span class="n">cells</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the bounding box of a set of cells.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        cells (set[tuple[int, int]]): A set of (x, y) tuples representing cell coordinates.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple[int, int, int, int] | None: The bounding box as (min_x, min_y, max_x, max_y),</span>
+<span class="sd">        or None if the set is empty.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cells</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">]</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">ys</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">ys</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="coords">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.coords">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">coords</span><span class="p">(</span><span class="o">*</span><span class="n">pairs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper function to create a set of coordinate tuples.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        *pairs: Variadic arguments representing (x, y) tuples.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        set[tuple[int, int]]: A set of (x, y) tuples.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="translate">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.translate">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">translate</span><span class="p">(</span><span class="n">cells</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span> <span class="n">dx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dy</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Translates a set of cells by (dx, dy), optionally wrapping coordinates.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        cells (set[tuple[int, int]]): A set of (x, y) tuples representing cell coordinates.</span>
+<span class="sd">        dx (int): The horizontal translation.</span>
+<span class="sd">        dy (int): The vertical translation.</span>
+<span class="sd">        width (int | None, optional): The width for wrapping. Defaults to None.</span>
+<span class="sd">        height (int | None, optional): The height for wrapping. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        set[tuple[int, int]]: The translated set of (x, y) tuples.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">:</span>
+        <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span>
+        <span class="k">if</span> <span class="n">width</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">height</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nx</span> <span class="o">%=</span> <span class="n">width</span>
+            <span class="n">ny</span> <span class="o">%=</span> <span class="n">height</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="canonicalize">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.canonicalize">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">canonicalize</span><span class="p">(</span><span class="n">cells</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalizes a set of cells so the top-left cell is at (0, 0).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        cells (set[tuple[int, int]]): A set of (x, y) tuples representing cell coordinates.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        set[tuple[int, int]]: The normalized set of (x, y) tuples.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cells</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">min_x</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">)</span>
+    <span class="n">min_y</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">y</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{(</span><span class="n">x</span> <span class="o">-</span> <span class="n">min_x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">min_y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TestGameOfLife</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Unit tests for the GameOfLife class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="TestGameOfLife.setUp">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.setUp">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets up a clean 10x10 grid before each test.</span>
+
+<span class="sd">        The grid uses toroidal (wrapping) behavior at the edges.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span> <span class="o">=</span> <span class="n">GameOfLife</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_underpopulation">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_underpopulation">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_underpopulation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tests that a live cell with 1 neighbor dies due to underpopulation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">coords</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIn</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="s2">&quot;Cell should die from underpopulation.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_survival_2_neighbors">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_survival_2_neighbors">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_survival_2_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tests that a live cell with 2 neighbors survives.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">coords</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="s2">&quot;Cell should survive with 2 neighbors.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_survival_3_neighbors">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_survival_3_neighbors">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_survival_3_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tests that a live cell with 3 neighbors survives.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">coords</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="s2">&quot;Cell should survive with 3 neighbors.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_overpopulation">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_overpopulation">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_overpopulation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tests that a live cell with more than 3 neighbors dies due to overpopulation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">coords</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIn</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="s2">&quot;Cell should die from overpopulation.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_reproduction">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_reproduction">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_reproduction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tests that a dead cell with exactly 3 neighbors becomes alive.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">coords</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="s2">&quot;Cell should be born from 3 neighbors.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_stasis_dead_cell">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_stasis_dead_cell">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_stasis_dead_cell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A dead cell (5, 5) with 2 or 4 neighbors should remain dead.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">coords</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIn</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="s2">&quot;Dead cell with 2 neighbors should stay dead&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">coords</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIn</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="s2">&quot;Dead cell with 4 neighbors should stay dead&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_still_life_block">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_still_life_block">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_still_life_block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The &#39;Block&#39; pattern should remain stable.</span>
+
+<span class="sd">        Shape (2x2):</span>
+<span class="sd">        ##</span>
+<span class="sd">        ##</span>
+<span class="sd">        Top-left at (1,1)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">block</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_still_life_beehive">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_still_life_beehive">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_still_life_beehive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The &#39;Beehive&#39; pattern should remain stable.</span>
+
+<span class="sd">        Shape:</span>
+<span class="sd">        .##.</span>
+<span class="sd">        #..#</span>
+<span class="sd">        .##.</span>
+<span class="sd">        Centered around (2,2), (3, 2)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">beehive</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">beehive</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">beehive</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_still_life_boat">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_still_life_boat">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_still_life_boat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The &#39;Boat&#39; pattern should remain stable.</span>
+
+<span class="sd">        Shape:</span>
+<span class="sd">        ##.</span>
+<span class="sd">        #.#</span>
+<span class="sd">        .#.</span>
+<span class="sd">        Top-left at (0,0)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">boat</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">boat</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">boat</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_oscillator_blinker_period_1">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_oscillator_blinker_period_1">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_oscillator_blinker_period_1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The &#39;Blinker&#39; should change orientation after 1 step.</span>
+
+<span class="sd">        Initial Shape (Horizontal):</span>
+<span class="sd">        .###.</span>
+
+<span class="sd">        After 1 Step (Vertical):</span>
+<span class="sd">        ..#..</span>
+<span class="sd">        ..#..</span>
+<span class="sd">        ..#..</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">blinker_h</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">blinker_v</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">blinker_h</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">blinker_v</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_oscillator_blinker_period_2">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_oscillator_blinker_period_2">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_oscillator_blinker_period_2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The &#39;Blinker&#39; should return to its initial state after 2 steps.&quot;&quot;&quot;</span>
+        <span class="n">blinker_h</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">blinker_h</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">blinker_h</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_oscillator_toad_period_1">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_oscillator_toad_period_1">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_oscillator_toad_period_1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The &#39;Toad&#39; should transition to phase 2 after 1 step.</span>
+
+<span class="sd">        Initial Shape (Phase 1):</span>
+<span class="sd">        ......</span>
+<span class="sd">        ..###.</span>
+<span class="sd">        .###..</span>
+<span class="sd">        ......</span>
+
+<span class="sd">        After 1 Step (Phase 2):</span>
+<span class="sd">        ...#..</span>
+<span class="sd">        .#..#.</span>
+<span class="sd">        .#..#.</span>
+<span class="sd">        ..#...</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">toad_p1</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">toad_p1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">s1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotEqual</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">toad_p1</span><span class="p">,</span> <span class="s2">&quot;Toad should change phase after 1 step&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">toad_p1</span><span class="p">),</span> <span class="s2">&quot;Population should stay constant for toad&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_oscillator_toad_period_2">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_oscillator_toad_period_2">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_oscillator_toad_period_2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The &#39;Toad&#39; returns to its initial state after 2 steps (period-2).&quot;&quot;&quot;</span>
+        <span class="n">toad_p1</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">toad_p1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">toad_p1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_torus_reproduction_top_left_corner">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_torus_reproduction_top_left_corner">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_torus_reproduction_top_left_corner</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A cell (0, 0) should be born from neighbors wrapping around the edges.&quot;&quot;&quot;</span>
+        <span class="n">initial_state</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_torus_overpopulation_right_edge">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_torus_overpopulation_right_edge">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_torus_overpopulation_right_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A cell (9, 5) on the right edge should die from 4 neighbors wrapping around.&quot;&quot;&quot;</span>
+        <span class="n">initial_state</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIn</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">())</span></div>
+
+        
+<div class="viewcode-block" id="TestGameOfLife.test_torus_survival_bottom_edge">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_torus_survival_bottom_edge">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_torus_survival_bottom_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A cell (5, 9) on the bottom edge should survive with 2 neighbors wrapping around.&quot;&quot;&quot;</span>
+        <span class="n">initial_state</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_torus_blinker_on_edge">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_torus_blinker_on_edge">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_torus_blinker_on_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A &#39;Blinker&#39; crossing the edge should oscillate correctly.&quot;&quot;&quot;</span>
+        <span class="n">blinker_h_wrap</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">blinker_v_wrap</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">blinker_h_wrap</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">blinker_v_wrap</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="TestGameOfLife.test_spaceship_glider_move">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_spaceship_glider_move">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_spaceship_glider_move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The &#39;Glider&#39; should move diagonally after 4 steps.</span>
+
+<span class="sd">        Initial Shape:</span>
+<span class="sd">        .#..</span>
+<span class="sd">        ..#.</span>
+<span class="sd">        ###.</span>
+
+<span class="sd">        After 4 Steps:</span>
+<span class="sd">        ....</span>
+<span class="sd">        ..#.</span>
+<span class="sd">        ...#</span>
+<span class="sd">        .###</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">glider_start</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">glider_start</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="n">glider_end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glider_end</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">glider_start</span><span class="p">))</span>
+        <span class="n">expected_translated</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="n">glider_start</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">glider_end</span><span class="p">,</span> <span class="n">expected_translated</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="TestGameOfLife.test_empty_board">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_empty_board">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_empty_board</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;An empty grid should remain empty.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">coords</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">coords</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_full_wrapping_board_dies">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_full_wrapping_board_dies">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_full_wrapping_board_dies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;With wrap=True (toroidal), a fully filled grid becomes empty after 1 step.&quot;&quot;&quot;</span>
+        <span class="n">full_board</span> <span class="o">=</span> <span class="n">coords</span><span class="p">(</span><span class="o">*</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">full_board</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">coords</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_full_board_bounded_differs">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_full_board_bounded_differs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_full_board_bounded_differs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;With wrap=False (bounded), a full 3x3 does not die completely: corners survive.&quot;&quot;&quot;</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">GameOfLife</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">full_board</span> <span class="o">=</span> <span class="n">coords</span><span class="p">(</span><span class="o">*</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)])</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">full_board</span><span class="p">)</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">expected</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_r_pentomino_chaos">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_r_pentomino_chaos">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_r_pentomino_chaos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The &#39;R-pentomino&#39; should evolve across first two steps without relying on exact coordinates.</span>
+
+<span class="sd">        Initial Shape:</span>
+<span class="sd">        .##.</span>
+<span class="sd">        ##..</span>
+<span class="sd">        .#..</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r_pentomino_p0</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">r_pentomino_p0</span><span class="p">)</span>
+        <span class="n">s0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+        <span class="n">box0</span> <span class="o">=</span> <span class="n">bounding_box</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
+        <span class="n">width0</span> <span class="o">=</span> <span class="n">box0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">box0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">height0</span> <span class="o">=</span> <span class="n">box0</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">box0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="c1"># Step 1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">s1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+        <span class="n">box1</span> <span class="o">=</span> <span class="n">bounding_box</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+        <span class="n">width1</span> <span class="o">=</span> <span class="n">box1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">box1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">height1</span> <span class="o">=</span> <span class="n">box1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">box1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotEqual</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s0</span><span class="p">,</span> <span class="s2">&quot;R-pentomino should change after 1 step&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertGreaterEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">s0</span><span class="p">),</span> <span class="s2">&quot;Population should not decrease at step 1&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertGreaterEqual</span><span class="p">(</span><span class="n">width1</span><span class="p">,</span> <span class="n">width0</span><span class="p">,</span> <span class="s2">&quot;Width should not shrink at step 1&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Step 2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">s2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+        <span class="n">box2</span> <span class="o">=</span> <span class="n">bounding_box</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+        <span class="n">width2</span> <span class="o">=</span> <span class="n">box2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">box2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">height2</span> <span class="o">=</span> <span class="n">box2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">box2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertGreaterEqual</span><span class="p">(</span><span class="n">width2</span><span class="p">,</span> <span class="n">width1</span><span class="p">,</span> <span class="s2">&quot;Width should not shrink at step 2&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertGreaterEqual</span><span class="p">(</span><span class="n">height2</span><span class="p">,</span> <span class="n">height1</span><span class="p">,</span> <span class="s2">&quot;Height should not shrink at step 2&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_get_state_is_defensive_copy">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_get_state_is_defensive_copy">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_get_state_is_defensive_copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;get_state() should return a copy, not a reference, to the internal state.&quot;&quot;&quot;</span>
+        <span class="n">initial_state</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
+
+        <span class="n">state_copy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+        <span class="n">state_copy</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">initial_state</span><span class="p">,</span> <span class="s2">&quot;Internal state should not be affected by mutating the returned set&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_constructor_validation">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_constructor_validation">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_constructor_validation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor validates dimensions and wrap type.&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Width must be positive&quot;</span><span class="p">):</span>
+            <span class="n">GameOfLife</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Height must be positive&quot;</span><span class="p">):</span>
+            <span class="n">GameOfLife</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dimensions must be positive&quot;</span><span class="p">):</span>
+            <span class="n">GameOfLife</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;wrap must be a bool&quot;</span><span class="p">):</span>
+            <span class="n">GameOfLife</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_bounding_box_helper">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_bounding_box_helper">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_bounding_box_helper</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The bounding_box helper should work correctly.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNone</span><span class="p">(</span><span class="n">bounding_box</span><span class="p">(</span><span class="nb">set</span><span class="p">()),</span> <span class="s2">&quot;Should return None for empty set&quot;</span><span class="p">)</span>
+        <span class="n">cells</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">bounding_box</span><span class="p">(</span><span class="n">cells</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_set_state_wraps_out_of_bounds">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_set_state_wraps_out_of_bounds">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_set_state_wraps_out_of_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;set_state should normalize out-of-bounds coordinates when wrap=True.&quot;&quot;&quot;</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">GameOfLife</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># (-1, -1) -&gt; (4,4), (5,5) -&gt; (0,0), (6, -2) -&gt; (1,3)</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">coords</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">expected</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_set_state_ignores_out_of_bounds">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_set_state_ignores_out_of_bounds">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_set_state_ignores_out_of_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;set_state should ignore out-of-bounds coordinates when wrap=False.&quot;&quot;&quot;</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">GameOfLife</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">coords</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="n">coords</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">expected</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TestGameOfLife.test_set_state_rejects_invalid_types">
+<a class="viewcode-back" href="../test_game_of_life.html#test_game_of_life.TestGameOfLife.test_set_state_rejects_invalid_types">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_set_state_rejects_invalid_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;set_state should raise ValueError on invalid entries (non 2-int tuples) with clear cases.&quot;&quot;&quot;</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">GameOfLife</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">invalid_inputs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{(</span><span class="mi">1</span><span class="p">,),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)},</span>     <span class="c1"># tuple length 1</span>
+            <span class="p">{(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)},</span>        <span class="c1"># non-int element</span>
+            <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)},</span>        <span class="c1"># tuple length 3</span>
+            <span class="p">{</span><span class="mf">1.5</span><span class="p">},</span>              <span class="c1"># non-tuple entry</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">invalid_inputs</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="n">case</span><span class="o">=</span><span class="n">case</span><span class="p">):</span>
+                <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+                    <span class="n">g</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">case</span><span class="p">)</span></div>
+</div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
