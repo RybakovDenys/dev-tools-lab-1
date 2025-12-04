@@ -1,7 +1,7 @@
 """
-Test suite for GameOfLife
+Test suite for GameOfLife.
 
-Coordinate system
+Coordinate system:
 - We use (x, y) tuples as (column, row).
 - Origin (0, 0) is the top-left corner.
 - x increases to the right; y increases downward (like terminal rows).
@@ -12,7 +12,16 @@ from game_of_life import GameOfLife
 
 
 def bounding_box(cells: set[tuple[int, int]]) -> tuple[int, int, int, int] | None:
-    """Return (min_x, min_y, max_x, max_y) as (left, top, right, bottom), or None for empty set."""
+    """
+    Computes the bounding box of a set of cells.
+
+    Args:
+        cells (set[tuple[int, int]]): A set of (x, y) tuples representing cell coordinates.
+
+    Returns:
+        tuple[int, int, int, int] | None: The bounding box as (min_x, min_y, max_x, max_y),
+        or None if the set is empty.
+    """
     if not cells:
         return None
     xs = [x for x, _ in cells]
@@ -20,11 +29,31 @@ def bounding_box(cells: set[tuple[int, int]]) -> tuple[int, int, int, int] | Non
     return (min(xs), min(ys), max(xs), max(ys))
 
 def coords(*pairs):
-    """Helper to create a set of coordinate tuples."""
+    """
+    Helper function to create a set of coordinate tuples.
+
+    Args:
+        *pairs: Variadic arguments representing (x, y) tuples.
+
+    Returns:
+        set[tuple[int, int]]: A set of (x, y) tuples.
+    """
     return set(pairs)
 
 def translate(cells: set[tuple[int, int]], dx: int, dy: int, width: int | None = None, height: int | None = None) -> set[tuple[int, int]]:
-    """Translate all cells by (dx, dy); wrap if width and height are provided."""
+    """
+    Translates a set of cells by (dx, dy), optionally wrapping coordinates.
+
+    Args:
+        cells (set[tuple[int, int]]): A set of (x, y) tuples representing cell coordinates.
+        dx (int): The horizontal translation.
+        dy (int): The vertical translation.
+        width (int | None, optional): The width for wrapping. Defaults to None.
+        height (int | None, optional): The height for wrapping. Defaults to None.
+
+    Returns:
+        set[tuple[int, int]]: The translated set of (x, y) tuples.
+    """
     result: set[tuple[int, int]] = set()
     for x, y in cells:
         nx, ny = x + dx, y + dy
@@ -35,7 +64,15 @@ def translate(cells: set[tuple[int, int]], dx: int, dy: int, width: int | None =
     return result
 
 def canonicalize(cells: set[tuple[int, int]]) -> set[tuple[int, int]]:
-    """Shift cells so the top-left occupied cell is at (0,0). Useful to compare shapes ignoring placement."""
+    """
+    Normalizes a set of cells so the top-left cell is at (0, 0).
+
+    Args:
+        cells (set[tuple[int, int]]): A set of (x, y) tuples representing cell coordinates.
+
+    Returns:
+        set[tuple[int, int]]: The normalized set of (x, y) tuples.
+    """
     if not cells:
         return set()
     min_x = min(x for x, _ in cells)
@@ -43,44 +80,57 @@ def canonicalize(cells: set[tuple[int, int]]) -> set[tuple[int, int]]:
     return {(x - min_x, y - min_y) for x, y in cells}
 
 class TestGameOfLife(unittest.TestCase):
+    """
+    Unit tests for the GameOfLife class.
+    """
 
     def setUp(self):
-        """Creates a clean 10x10 grid before each test.
+        """
+        Sets up a clean 10x10 grid before each test.
 
-        Tests assume toroidal (wrapping) behavior at grid edges.
-        We make that explicit by passing wrap=True.
+        The grid uses toroidal (wrapping) behavior at the edges.
         """
         self.game = GameOfLife(10, 10, wrap=True)
 
     def test_underpopulation(self):
-        """A live cell (5, 5) with 1 neighbor should die."""
+        """
+        Tests that a live cell with 1 neighbor dies due to underpopulation.
+        """
         self.game.set_state(coords((5, 5), (5, 6)))
         self.game.step()
-        self.assertNotIn((5, 5), self.game.get_state(), "Cell should die from underpopulation")
+        self.assertNotIn((5, 5), self.game.get_state(), "Cell should die from underpopulation.")
 
     def test_survival_2_neighbors(self):
-        """A live cell (5, 5) with 2 neighbors should survive."""
+        """
+        Tests that a live cell with 2 neighbors survives.
+        """
         self.game.set_state(coords((5, 5), (5, 6), (6, 5)))
         self.game.step()
-        self.assertIn((5, 5), self.game.get_state(), "Cell should survive with 2 neighbors")
+        self.assertIn((5, 5), self.game.get_state(), "Cell should survive with 2 neighbors.")
 
     def test_survival_3_neighbors(self):
-        """A live cell (5, 5) with 3 neighbors should survive."""
+        """
+        Tests that a live cell with 3 neighbors survives.
+        """
         self.game.set_state(coords((5, 5), (5, 6), (6, 5), (4, 5)))
         self.game.step()
-        self.assertIn((5, 5), self.game.get_state(), "Cell should survive with 3 neighbors")
+        self.assertIn((5, 5), self.game.get_state(), "Cell should survive with 3 neighbors.")
 
     def test_overpopulation(self):
-        """A live cell (5, 5) with 4 neighbors should die."""
+        """
+        Tests that a live cell with more than 3 neighbors dies due to overpopulation.
+        """
         self.game.set_state(coords((5, 5), (4, 5), (6, 5), (5, 4), (5, 6)))
         self.game.step()
-        self.assertNotIn((5, 5), self.game.get_state(), "Cell should die from overpopulation")
+        self.assertNotIn((5, 5), self.game.get_state(), "Cell should die from overpopulation.")
 
     def test_reproduction(self):
-        """A dead cell (5, 5) with 3 neighbors should become alive."""
+        """
+        Tests that a dead cell with exactly 3 neighbors becomes alive.
+        """
         self.game.set_state(coords((4, 5), (6, 5), (5, 4)))
         self.game.step()
-        self.assertIn((5, 5), self.game.get_state(), "Cell should be born from 3 neighbors")
+        self.assertIn((5, 5), self.game.get_state(), "Cell should be born from 3 neighbors.")
 
     def test_stasis_dead_cell(self):
         """A dead cell (5, 5) with 2 or 4 neighbors should remain dead."""
